@@ -1,0 +1,265 @@
+<div class="container my-form">
+
+  <div class="row" *ngIf="isAddForm">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 modal-1">
+      <div>
+        <button class="close-modal-1" (click)="closeForm()">&times;</button>
+        <h5>Product Details</h5>
+      </div>
+      <form [formGroup]="loginReactiveForm" (ngSubmit)="submitData(myForm)" #myForm>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Enter the Name">
+        </div>
+        <div class="mb-3">
+          <label for="floatingTextarea2">Description</label>
+          <textarea formControlName="description" class="form-control" id="floatingTextarea2"
+            placeholder="Description..."></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="image">Image</label>
+          <input type="url" formControlName="image" class="form-control" placeholder="Enter URL">
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="image">Rating</label>
+            <input type="number" formControlName="rating" class="form-control" placeholder="Enter Rating" min="1"
+              max="5">
+          </div>
+          <div class="col">
+            <label for="status">Inventory status</label>
+            <select class="form-select" aria-label="Default select example" formControlName="select">
+              <option value="INSTOCK">INSTOCK</option>
+              <option value="LOWSTOCK">LOWSTOCK</option>
+              <option value="OUTOFSTOCK">OUTOFSTOCK</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" value="accessories" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Accessories
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="electronics" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  electronics
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" value="clothing" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Clothing
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="fitness" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault4">
+                  fitness
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" formControlName="price" aria-label="price"
+              placeholder="Enter Price">
+          </div>
+          <div class="col">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" formControlName="quantity" aria-label="quantity"
+              placeholder="Enter Quantity">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+        <button type="submit" class="btn btn-outline-primary" (click)="closeForm()">Cancel</button>
+      </form>
+    </div>
+    <div class="overlay-1"></div>
+  </div>
+  <div class="row" *ngIf="isEditForm">
+    <div class="col modal-1">
+      <button class="close-modal-1" (click)="closeForm()">&times;</button>
+      <h5>Product Details</h5>
+      <form [formGroup]="loginEditReactiveForm" (ngSubmit)="submitEditData()" #myForm>
+        <div class="mb-3 text-center">
+          <img src="{{editData.image}}" alt="No image Found" style="width: 149px;">
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name">
+        </div>
+        <div class="mb-3">
+          <label for="floatingTextarea2">Description</label>
+          <textarea formControlName="description" class="form-control" id="floatingTextarea2"
+            style="height: 100px"></textarea>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="image">Rating</label>
+            <input type="number" formControlName="rating" class="form-control" placeholder="Enter Rating" min="1"
+              max="5">
+          </div>
+          <div class="col">
+            <label for="status">Inventory status</label>
+            <select class="form-select" aria-label="Default select example" formControlName="select">
+              <option value="INSTOCK">INSTOCK</option>
+              <option value="LOWSTOCK">LOWSTOCK</option>
+              <option value="OUTOFSTOCK">OUTOFSTOCK</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="category" class="form-label">Category</label>
+          <div class="row">
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" value="accessories" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Accessories
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="electronics" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  electronics
+                </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input class="form-check-input" value="clothing" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault3">
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Clothing
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" value="fitness" type="radio" name="radioinput"
+                  formControlName="radioinput" id="flexRadioDefault4">
+                <label class="form-check-label" for="flexRadioDefault4">
+                  fitness
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" formControlName="price" aria-label="price">
+          </div>
+          <div class="col">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" formControlName="quantity" aria-label="quantity">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+        <button type="submit" class="btn btn-outline-primary" (click)="closeForm()">Cancel</button>
+      </form>
+    </div>
+    <div class="overlay-1"></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h1 class="text-center border-bottom border-secondary">Product List</h1>
+  </div>
+  <div class="row">
+    <div class="col d-flex flex-row">
+      <button class="btn btn-success" (click)="openForm()"><i class="fa-regular fa-plus"></i> New</button>
+      <button class="btn btn-danger ms-1" (click)="deleteSelected()" *ngIf="showData.length!=0"><i
+          class="fa-regular fa-trash-can"></i> Delete</button>
+    </div>
+    <div class="col d-flex justify-content-end">
+       <button class="btn btn-light export-btn ms-1" (click)="fileDownload()">Export</button>
+    </div>
+  </div>
+  <div class="row p-3 mt-3">
+    <div class="col d-flex justify-content-between">
+      <h4>Manage Product</h4>
+      <div><input type="text" class="form-control" #search placeholder="Enter the Search..."
+          (keyup)="searchWord(search.value)"></div>
+    </div>
+    <!-- <div class="col col-lg-2 d-flex justify-content-end align-items-center">
+      </div> -->
+  </div>
+  <div class="row data-table">
+    <div class="col">
+      <table class="table table-light">
+        <thead>
+          <tr [ngClass]="{'table-primary':checked.checked==true}">
+            <th scope="col"><input type="checkbox" (click)="selectAll(checked)" #checked></th>
+            <th scope="col" (click)="sortList('code')">Code</th>
+            <th scope="col" (click)="sortList('name')">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col" (click)="sortList('price')">Price</th>
+            <th scope="col" (click)="sortList('radioinput')">Category</th>
+            <th scope="col" (click)="sortList('rating')">Reviews</th>
+            <th scope="col" (click)="sortList('select')">Status</th>
+            <th scope="col">&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let item of showData | paginate: { itemsPerPage: productPerPage, currentPage: page, totalItems: total };"
+            [ngClass]="{'table-primary':item.isCheck==true}">
+            <th scope="row" [ngClass]="{'active-blue':item?.isCheck}"><input type="checkbox" [checked]="item.isCheck"
+                (click)="checking(item.code)"></th>
+            <td>{{item.code}}</td>
+            <td>{{item.name}}</td>
+            <td><img src="{{item.image}}" alt="No found"></td>
+            <td>${{item.price}}</td>
+            <td>{{item.radioinput}}</td>
+            <td>
+              <!-- {{item.rating}} -->
+              <b *ngFor="let item1 of [].constructor(5) let i = index;">
+                <i *ngIf="i+1 <= item?.rating" class="fa-solid fa-star" style="color: rgb(212, 105, 33);"></i>
+                <i *ngIf="i+1 > item?.rating" class="fa-regular fa-star" style="color: rgb(212, 105, 33);"></i>
+              </b>
+            </td>
+            <td><span
+                [ngClass]="{'bg-success':item.select=='INSTOCK','bg-warning':item.select=='LOWSTOCK','bg-danger':item.select=='OUTOFSTOCK'}">{{item.select}}</span>
+            </td>
+            <td><button class="btn btn-success" (click)="openEditForm(item.code)"><i
+                  class="fa-solid fa-pen-to-square"></i></button>&nbsp;&nbsp;<button class="btn btn-danger"
+                (click)="deleteRow(item.code)"><i class="fa-regular fa-trash-can"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row" *ngIf="showData.length!=0">
+    <div class="pagination d-flex justify-content-center mt-1 col-12 col-sm-6 col-md-6 col-lg-6">
+      <pagination-controls (pageChange)="pageChangeEvent($event)"></pagination-controls>
+    </div>
+    <div class="col-12 col-sm-6 col-md-6 col-lg-6 mt-1 d-flex justify-content-center">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Item Per Page
+        </button>
+        <ul class="dropdown-menu">
+          <li *ngFor="let item of productPerPageArr"><a class="dropdown-item" href="#"
+              (click)="itemPerPage(item)">{{item}}</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
